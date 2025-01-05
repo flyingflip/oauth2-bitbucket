@@ -47,7 +47,7 @@ class Bitbucket extends AbstractProvider
      */
     public function __construct(array $options = [], array $collaborators = [])
     {
-        $collaborators['optionProvider'] = new FitbitOptionsProvider(
+        $collaborators['optionProvider'] = new BitbucketOptionsProvider(
             $options['clientId'],
             $options['clientSecret']
         );
@@ -89,7 +89,7 @@ class Bitbucket extends AbstractProvider
     }
 
     /**
-     * Returns all scopes available from Fitbit.
+     * Returns all scopes available from Bitbucket.
      * It is recommended you only request the scopes you need!
      *
      * @return array
@@ -100,7 +100,7 @@ class Bitbucket extends AbstractProvider
     }
 
     /**
-     * Checks Fitbit API response for errors.
+     * Checks Bitbucket API response for errors.
      *
      * @throws IdentityProviderException
      *
@@ -140,7 +140,7 @@ class Bitbucket extends AbstractProvider
 
     /**
      * Returns authorization parameters based on provided options.
-     * Fitbit does not use the 'approval_prompt' param and here we remove it.
+     * Bitbucket does not use the 'approval_prompt' param and here we remove it.
      *
      * @param array $options
      *
@@ -185,15 +185,4 @@ class Bitbucket extends AbstractProvider
         return parent::parseResponse($response);
     }
 
-    /**
-     * Parse Bitbucket API Rate Limit headers and return a FitbitRateLimit object.
-     *
-     * @param ResponseInterface $response
-     *
-     * @return FitbitRateLimit Fitbit API Rate Limit information
-     */
-    public function getFitbitRateLimit(ResponseInterface $response)
-    {
-        return new FitbitRateLimit($response);
-    }
 }
