@@ -96,7 +96,7 @@ class Bitbucket extends AbstractProvider
      */
     protected function getDefaultScopes()
     {
-        return ['activity', 'heartrate', 'location', 'profile', 'settings', 'sleep', 'social', 'weight', 'nutrition'];
+        return ['project:admin', 'repository:write', 'pullrequest', 'webhook', 'email', 'account'];
     }
 
     /**
